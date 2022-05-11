@@ -1,0 +1,6 @@
+version: "1"
+rules:
+  - base: next
+    upstream: storybookjs:next
+    mergeMethod: merge
+    mergeUnstable: true
