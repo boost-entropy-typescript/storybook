@@ -76,6 +76,8 @@
     "publish:latest": "lerna publish --exact --concurrency 1 --force-publish",
     "publish:next": "npm run publish:latest -- --npm-tag=next",
     "storybook:ui": "./lib/cli/bin/index.js dev --port 6006 --config-dir ./ui/.storybook --no-manager-cache",
+    "storybook:ui:build": "./lib/cli/bin/index.js build --config-dir ./ui/.storybook",
+    "storybook:ui:chromatic": "yarn chromatic --build-script-name storybook:ui:build --storybook-config-dir ./ui/.storybook --storybook-base-dir ./code/ui --project-token=$CHROMATIC_TOKEN_STORYBOOK_UI --only-changed --exit-zero-on-changes --exit-once-uploaded",
     "task": "cd .. && yarn task",
     "test": "NODE_OPTIONS=--max_old_space_size=4096 jest --config ./jest.config.js",
     "test:cli": "npm --prefix lib/cli run test"
@@ -214,6 +216,7 @@
     "@storybook/telemetry": "workspace:*",
     "@storybook/testing-library": "0.0.14-next.0",
     "@storybook/theming": "workspace:*",
+    "@storybook/types": "workspace:*",
     "@storybook/ui": "workspace:*",
     "@storybook/vue": "workspace:*",
     "@storybook/vue-webpack5": "workspace:*",
@@ -338,6 +341,9 @@
     "webpack-dev-middleware": "^5.3.1",
     "window-size": "^1.1.1",
     "zx": "^7.0.3"
+  },
+  "devDependencies": {
+    "expect-type": "^0.14.2"
   },
   "dependenciesMeta": {
     "@compodoc/compodoc": {
