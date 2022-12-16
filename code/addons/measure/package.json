@@ -1,6 +1,6 @@
 {
   "name": "@storybook/addon-measure",
-  "version": "7.0.0-beta.10",
+  "version": "7.0.0-beta.12",
   "description": "Inspect layouts by visualizing the box model",
   "keywords": [
     "storybook-addons",
@@ -74,12 +74,12 @@
     "prep": "../../../scripts/prepare/bundle.ts"
   },
   "dependencies": {
-    "@storybook/client-logger": "7.0.0-beta.10",
-    "@storybook/components": "7.0.0-beta.10",
-    "@storybook/core-events": "7.0.0-beta.10",
-    "@storybook/manager-api": "7.0.0-beta.10",
-    "@storybook/preview-api": "7.0.0-beta.10",
-    "@storybook/types": "7.0.0-beta.10",
+    "@storybook/client-logger": "7.0.0-beta.12",
+    "@storybook/components": "7.0.0-beta.12",
+    "@storybook/core-events": "7.0.0-beta.12",
+    "@storybook/manager-api": "7.0.0-beta.12",
+    "@storybook/preview-api": "7.0.0-beta.12",
+    "@storybook/types": "7.0.0-beta.12",
     "global": "^4.4.0"
   },
   "devDependencies": {
@@ -107,7 +107,7 @@
       "./src/preview.tsx"
     ]
   },
-  "gitHead": "e0ac32774403f7b73348cb1a4ebdabce0c641d86",
+  "gitHead": "dd52c7e8853bc40791deb55e36473c0c18ab5957",
   "storybook": {
     "displayName": "Measure",
     "unsupportedFrameworks": [

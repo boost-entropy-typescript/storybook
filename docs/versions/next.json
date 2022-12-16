@@ -1,1 +1,1 @@
-{"version":"7.0.0-beta.10","info":{"plain":"#### Build\n\n-   Build: compile detection was using a non-conforming package, causing cache to miss always. [#20297](https://github.com/storybooks/storybook/pull/20297)\n\n#### Dependency Upgrades\n\n-   React-vite: Pin react-docgen version [#20300](https://github.com/storybooks/storybook/pull/20300)"}}
+{"version":"7.0.0-beta.12","info":{"plain":"#### Other\n\n-   Revert \"Core: Wrap manager entries to handle exports\" [#20311](https://github.com/storybooks/storybook/pull/20311)"}}
