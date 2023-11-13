@@ -10,7 +10,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import slash from 'slash';
 
 import type { Options, CoreConfig, DocsOptions, PreviewAnnotation } from '@storybook/types';
-import { globals } from '@storybook/preview/globals';
+import { globalsNameReferenceMap } from '@storybook/preview/globals';
 import {
   getBuilderOptions,
   getRendererName,
@@ -219,8 +219,9 @@ export default async (
     `);
   }
 
+  const externals: Record<string, string> = globalsNameReferenceMap;
   if (build?.test?.emptyBlocks) {
-    globals['@storybook/blocks'] = '__STORYBOOK_BLOCKS_EMPTY_MODULE__';
+    externals['@storybook/blocks'] = '__STORYBOOK_BLOCKS_EMPTY_MODULE__';
   }
 
   return {
@@ -241,7 +242,7 @@ export default async (
     watchOptions: {
       ignored: /node_modules/,
     },
-    externals: globals,
+    externals,
     ignoreWarnings: [
       {
         message: /export '\S+' was not found in 'global'/,
@@ -305,6 +306,7 @@ export default async (
       rules: [
         {
           test: /\.stories\.([tj])sx?$|(stories|story)\.mdx$/,
+          enforce: 'post',
           use: [
             {
               loader: require.resolve('@storybook/builder-webpack5/loaders/export-order-loader'),
@@ -322,7 +324,7 @@ export default async (
           },
         },
         builderOptions.useSWC
-          ? createSWCLoader(Object.keys(virtualModuleMapping))
+          ? await createSWCLoader(Object.keys(virtualModuleMapping), options)
           : createBabelLoader(babelOptions, typescriptOptions, Object.keys(virtualModuleMapping)),
         {
           test: /\.md$/,
