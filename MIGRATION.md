@@ -42,6 +42,9 @@
     - [Web Components](#web-components)
       - [Dropping default babel plugins in Webpack5-based projects](#dropping-default-babel-plugins-in-webpack5-based-projects)
   - [Deprecations which are now removed](#deprecations-which-are-now-removed)
+    - [Methods and properties from AddonStore](#methods-and-properties-from-addonstore)
+    - [Methods and properties from PreviewAPI](#methods-and-properties-from-previewapi)
+    - [Removals in @storybook/types](#removals-in-storybooktypes)
     - [--use-npm flag in storybook CLI](#--use-npm-flag-in-storybook-cli)
     - [`setGlobalConfig` from `@storybook/react`](#setglobalconfig-from-storybookreact)
     - [StorybookViteConfig type from @storybook/builder-vite](#storybookviteconfig-type-from-storybookbuilder-vite)
@@ -54,6 +57,7 @@
     - [Deprecated docs parameters](#deprecated-docs-parameters)
     - [Description Doc block properties](#description-doc-block-properties)
     - [Manager API expandAll and collapseAll methods](#manager-api-expandall-and-collapseall-methods)
+    - [`Primary` Doc block properties](#primary-doc-block-properties)
     - [`createChannel` from `@storybook/postmessage` and  `@storybook/channel-websocket`](#createchannel-from-storybookpostmessage-and--storybookchannel-websocket)
 - [From version 7.5.0 to 7.6.0](#from-version-750-to-760)
     - [CommonJS with Vite is deprecated](#commonjs-with-vite-is-deprecated)
@@ -789,6 +793,40 @@ Until the 8.0 release, Storybook provided the `@babel/preset-env` preset for Web
 
 ### Deprecations which are now removed
 
+#### Methods and properties from AddonStore
+
+The following methods and properties from the class `AddonStore` in  `@storybook/manager-api` are now removed:
+
+- `serverChannel` -> Use `channel` instead
+- `getServerChannel` -> Use `getChannel` instead
+- `setServerChannel` -> Use `setChannel` instead
+- `hasServerChannel` -> Use `hasChannel` instead
+- `addPanel`
+
+The following methods and properties from the class `AddonStore` in  `@storybook/preview-api` are now removed:
+
+- `serverChannel` -> Use `channel` instead
+- `getServerChannel` -> Use `getChannel` instead
+- `setServerChannel` -> Use `setChannel` instead
+- `hasServerChannel` -> Use `hasChannel` instead
+
+#### Methods and properties from PreviewAPI
+
+The following exports from `@storybook/preview-api` are now removed:
+
+- `useSharedState`
+- `useAddonState`
+
+Please file an issue if you need these APIs.
+
+#### Removals in @storybook/types
+
+The following exports from `@storybook/types` are now removed:
+
+- `API_ADDON` -> Use `Addon_Type` instead
+- `API_COLLECTION` -> Use `Addon_Collection` instead
+- `API_Panels`
+
 #### --use-npm flag in storybook CLI
 
 The `--use-npm` is now removed. Use `--package-manager=npm` instead. [More info here](#cli-option---use-npm-deprecated).
@@ -898,6 +936,10 @@ const api = useStorybookApi()
 api.collapseAll() // becomes api.emit(STORIES_COLLAPSE_ALL)
 api.expandAll() // becomes api.emit(STORIES_EXPAND_ALL)
 ```
+
+#### `Primary` Doc block properties
+
+The `name` prop is now removed in favor of the `of` property. [More info](#doc-blocks).
 
 #### `createChannel` from `@storybook/postmessage` and  `@storybook/channel-websocket`
 
