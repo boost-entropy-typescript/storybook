@@ -334,7 +334,7 @@ module.exports = {
         },
         {
           pathSegment: 'addon-migration-guide',
-          title: 'Migrate addons to 7.0',
+          title: 'Migrate addons to 8.0',
           type: 'link',
         },
       ],
@@ -758,7 +758,7 @@ module.exports = {
       type: 'link',
     },
     {
-      title: 'Migrate to 7.0',
+      title: 'Migrate to 8.0',
       pathSegment: 'migration-guide',
       type: 'link',
     },
