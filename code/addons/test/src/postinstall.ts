@@ -58,7 +58,9 @@ export default async function postInstall(options: PostinstallOptions) {
     '@storybook/experimental-nextjs-vite',
     '@storybook/sveltekit',
   ].includes(info.frameworkPackageName)
-    ? info.frameworkPackageName
+    ? info.frameworkPackageName === '@storybook/nextjs'
+      ? '@storybook/experimental-nextjs-vite'
+      : info.frameworkPackageName
     : info.rendererPackageName &&
         ['@storybook/react', '@storybook/svelte', '@storybook/vue3'].includes(
           info.rendererPackageName
@@ -88,7 +90,7 @@ export default async function postInstall(options: PostinstallOptions) {
     if (coercedVitestVersion && !satisfies(coercedVitestVersion, '>=2.1.0')) {
       reasons.push(dedent`
         • The addon requires Vitest 2.1.0 or later. You are currently using ${picocolors.bold(vitestVersionSpecifier)}.
-          Please update your ${picocolors.bold(colors.pink('vitest'))} dependency and try again.
+          Please update all of your Vitest dependencies and try again.
       `);
     }
 
@@ -431,7 +433,7 @@ const getVitestPluginInfo = (framework: string) => {
   let frameworkPluginCall = '';
   let frameworkPluginDocs = '';
 
-  if (framework === '@storybook/nextjs') {
+  if (framework === '@storybook/nextjs' || framework === '@storybook/experimental-nextjs-vite') {
     frameworkPluginImport =
       "import { storybookNextJsPlugin } from '@storybook/experimental-nextjs-vite/vite-plugin';";
     frameworkPluginDocs =

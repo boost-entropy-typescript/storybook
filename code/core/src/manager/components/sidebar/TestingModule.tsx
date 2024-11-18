@@ -175,10 +175,10 @@ const DynamicInfo = ({ state }: { state: TestProviders[keyof TestProviders] }) =
   const Title = state.title;
   return (
     <Info>
-      <TitleWrapper crashed={state.crashed}>
+      <TitleWrapper crashed={state.crashed} id="testing-module-title">
         <Title {...state} />
       </TitleWrapper>
-      <DescriptionWrapper>
+      <DescriptionWrapper id="testing-module-description">
         <Description {...state} />
       </DescriptionWrapper>
     </Info>
@@ -229,7 +229,12 @@ export const TestingModule = ({
   const testing = testProviders.length > 0;
 
   return (
-    <Outline running={running} crashed={crashed} failed={failed || errorCount > 0}>
+    <Outline
+      id="storybook-testing-module"
+      running={running}
+      crashed={crashed}
+      failed={failed || errorCount > 0}
+    >
       <Card>
         <Collapsible
           style={{
@@ -239,7 +244,7 @@ export const TestingModule = ({
         >
           <Content ref={contentRef}>
             {testProviders.map((state) => (
-              <TestProvider key={state.id}>
+              <TestProvider key={state.id} data-module-id={state.id}>
                 <DynamicInfo state={state} />
                 <Actions>
                   {state.watchable && (
