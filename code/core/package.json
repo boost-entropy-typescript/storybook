@@ -1,6 +1,6 @@
 {
   "name": "storybook",
-  "version": "9.0.0-beta.4",
+  "version": "9.0.0-beta.5",
   "description": "Storybook framework-agnostic API",
   "keywords": [
     "storybook"
@@ -399,7 +399,8 @@
     "./internal/manager/globals-runtime": {
       "import": "./dist/manager/globals-runtime.js"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./internal/package.json": "./package.json"
   },
   "main": "dist/index.cjs",
   "module": "dist/index.js",
